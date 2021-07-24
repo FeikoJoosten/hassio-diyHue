@@ -45,6 +45,16 @@ fi
 
 echo "Your Architecture is $BUILD_ARCHI"
 
+if [ $DEBUG=true ]; then
+    echo -e "\033[33m--Debug set to $DEBUG, enabling debug--\033[0m"
+    sed -i "s|debug = .* #|debug = True # |g" /opt/hue-emulator/HueEmulator3.py
+else
+    echo -e "\033[33m--Debug set to $DEBUG, disabling debug--\033[0m"
+    sed -i "s|debug = .* #|debug = False # |g" /opt/hue-emulator/HueEmulator3.py
+fi
+
+echo -e "\033[32m--Startup complete. Open Hue app and search for bridges--\033[0m"
+
 if [ "$NO_SERVE_HTTPS" = "true" ] ; then
     echo "No serve HTTPS"
     python3 -u /opt/hue-emulator/HueEmulator3.py --docker --no-serve-https
