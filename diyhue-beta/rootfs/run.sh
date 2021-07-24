@@ -21,28 +21,27 @@ fi
 
 echo -e "\033[33m--Setting up diyHue--\033[0m" 
 
-if [ -f "/opt/hue-emulator/export/cert.pem" ]; then
+if [ -f "$CONFIG_PATH/cert.pem" ]; then
     echo -e "\033[33m--Restoring certificate--\033[0m"
-    cp /opt/hue-emulator/export/cert.pem /opt/hue-emulator/cert.pem
+    cp $CONFIG_PATH/cert.pem /opt/hue-emulator/cert.pem
     echo -e "\033[33m--Certificate restored--\033[0m"
 else
     echo -e "\033[33m--Generating certificate--\033[0m"
-    /opt/hue-emulator/genCert.sh $mac
-    cp /opt/hue-emulator/cert.pem /opt/hue-emulator/export/cert.pem
+    /opt/hue-emulator/genCert.sh $MAC
+    cp /opt/hue-emulator/cert.pem $CONFIG_PATH/cert.pem
     echo -e "\033[33m--Certificate created--\033[0m"
 fi
 
-if [ -f "/opt/hue-emulator/export/config.json" ]; then
+if [ -f "$CONFIG_PATH/config.json" ]; then
     echo -e "\033[33m--Restoring config--\033[0m" 
-    cp /opt/hue-emulator/export/config.json /opt/hue-emulator/config.json
+    cp $CONFIG_PATH/config.json /opt/hue-emulator/config.json
     echo -e "\033[33m--Config restored--\033[0m" 
 else
     echo -e "\033[33m--Downloading default config--\033[0m"
     curl -o /opt/hue-emulator/config.json https://raw.githubusercontent.com/mariusmotea/diyHue/master/BridgeEmulator/config.json
-    cp /opt/hue-emulator/config.json /opt/hue-emulator/export/config.json
+    cp /opt/hue-emulator/config.json $CONFIG_PATH/config.json
     echo -e "\033[33m--Config downloaded--\033[0m" 
 fi
-
 
 echo "Your Architecture is $BUILD_ARCHI"
 
