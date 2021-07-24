@@ -28,7 +28,7 @@ RUN curl -J -L -o $diyhue.tar.gz "https://github.com/diyhue/diyHue/archive/refs/
 	&& pip3 install -r /diyhue/requirements.txt --no-cache-dir
 
 # Set working directory to the Archive folder
-WORKDIR /opt/hue-emulator
+WORKDIR /opt/hue-emulator/config
 
 # Install diyHue
 RUN mv /diyhue/BridgeEmulator/HueObjects/										./HueObjects/
