@@ -19,8 +19,6 @@ else
     echo "$CONFIG_PATH created."
 fi
 
-cp /data/options.json $CONFIG_PATH/options.json
-
 echo -e "\033[33m--Setting up diyHue--\033[0m" 
 
 if [ -f "$CONFIG_PATH/cert.pem" ]; then
