@@ -19,6 +19,8 @@ else
     echo "$CONFIG_PATH created."
 fi
 
+cp /data/options.json $CONFIG_PATH/options.json
+
 echo -e "\033[33m--Setting up diyHue--\033[0m" 
 
 if [ -f "$CONFIG_PATH/cert.pem" ]; then
@@ -34,12 +36,12 @@ fi
 
 if [ -f "$CONFIG_PATH/config.json" ]; then
     echo -e "\033[33m--Restoring config--\033[0m" 
-    cp $CONFIG_PATH/config.json /opt/hue-emulator/config.json
+    cp $CONFIG_PATH/config.json /opt/hue-emulator/config/config.json
     echo -e "\033[33m--Config restored--\033[0m" 
 else
     echo -e "\033[33m--Downloading default config--\033[0m"
-    curl -o /opt/hue-emulator/config.json https://raw.githubusercontent.com/mariusmotea/diyHue/master/BridgeEmulator/config.json
-    cp /opt/hue-emulator/config.json $CONFIG_PATH/config.json
+    curl -o /opt/hue-emulator/config/config.json https://raw.githubusercontent.com/mariusmotea/diyHue/master/BridgeEmulator/config.json
+    cp /opt/hue-emulator/config/config.json $CONFIG_PATH/config.json
     echo -e "\033[33m--Config downloaded--\033[0m" 
 fi
 
