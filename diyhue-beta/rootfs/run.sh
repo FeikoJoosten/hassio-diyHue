@@ -62,8 +62,8 @@ echo -e "\033[32m--Startup complete. Open Hue app and search for bridges--\033[0
 
 if [ "$NO_SERVE_HTTPS" = "true" ] ; then
     echo "No serve HTTPS"
-    exec python3 -u /opt/hue-emulator/HueEmulator3.py --docker --no-serve-https
+    exec python3 -u /opt/hue-emulator/HueEmulator3.py --docker --no-serve-https --deconz $DECONZ
 else 
     echo "Serve HTTPS"
-    exec python3 -u /opt/hue-emulator/HueEmulator3.py --docker
+    exec python3 -u /opt/hue-emulator/HueEmulator3.py --docker --deconz $DECONZ
 fi
