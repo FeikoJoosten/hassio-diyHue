@@ -13,10 +13,10 @@ ENV BUILD_ARCHI = ${BUILD_ARCH}
 # Other settings
 ENV LANG C.UTF-8
 ENV DIYHUE_VERSION=master
-ENV WORKING_DIR=/opt/hue-emulator
+ENV WORKING_DIR=/opt/hue-emulator/config
 
 # Create the needed folders
-RUN mkdir diyhue config ${WORKING_DIR}
+RUN mkdir -p diyhue config ${WORKING_DIR}
 
 # Install all needed dependencies
 RUN apk add -q -u python3 openssl nmap psmisc iproute2 alpine-sdk build-base
