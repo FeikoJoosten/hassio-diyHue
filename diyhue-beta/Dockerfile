@@ -13,7 +13,7 @@ ENV BUILD_ARCHI = ${BUILD_ARCH}
 # Other settings
 ENV LANG C.UTF-8
 ENV DIYHUE_VERSION=master
-ENV WORKING_DIR=/opt/hue-emulator
+ENV WORKING_DIR=/config/diyhue
 
 # Create the needed folders
 RUN mkdir diyhue config ${WORKING_DIR}
@@ -28,7 +28,7 @@ RUN curl -J -L -o $diyhue.tar.gz "https://github.com/diyhue/diyHue/archive/refs/
 	&& pip3 install -r /diyhue/requirements.txt --no-cache-dir
 
 # Set working directory to the Archive folder
-WORKDIR /config/diyhue
+WORKDIR /opt/hue-emulator
 
 # Install diyHue
 RUN mv /diyhue/BridgeEmulator/HueObjects/										./HueObjects/
