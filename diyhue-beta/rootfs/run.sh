@@ -24,6 +24,7 @@ if ! [[ -d /opt/hue-emulator/config ]]; then
     mkdir -p /opt/hue-emulator/config
 fi
 
+: '
 echo -e "\033[33m--Setting up diyHue--\033[0m" 
 
 if [ -f "$CONFIG_PATH/cert.pem" ]; then
@@ -59,6 +60,7 @@ else
 fi
 
 echo -e "\033[32m--Startup complete. Open Hue app and search for bridges--\033[0m"
+'
 
 if [ "$NO_SERVE_HTTPS" = "true" ] ; then
     echo "No serve HTTPS"
