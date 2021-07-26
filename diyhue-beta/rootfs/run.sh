@@ -21,6 +21,11 @@ fi
 
 echo -e "\033[33m--Setting up diyHue--\033[0m" 
 
+if ! [[ -d /opt/hue-emulator/config ]]; then
+    echo "/opt/hue-emulator/config created."
+    mkdir -p /opt/hue-emulator/config
+fi
+
 if [ -f "$CONFIG_PATH/cert.pem" ]; then
     echo -e "\033[33m--Restoring certificate--\033[0m"
     cp $CONFIG_PATH/cert.pem /opt/hue-emulator/cert.pem
