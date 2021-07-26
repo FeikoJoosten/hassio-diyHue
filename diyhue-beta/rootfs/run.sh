@@ -28,12 +28,12 @@ fi
 
 if [ -f "$CONFIG_PATH/cert.pem" ]; then
     echo -e "\033[33m--Restoring certificate--\033[0m"
-    cp $CONFIG_PATH/cert.pem /opt/hue-emulator/cert.pem
+    cp $CONFIG_PATH/cert.pem /opt/hue-emulator/config/cert.pem
     echo -e "\033[33m--Certificate restored--\033[0m"
 else
     echo -e "\033[33m--Generating certificate--\033[0m"
     /opt/hue-emulator/genCert.sh $MAC
-    cp /opt/hue-emulator/cert.pem $CONFIG_PATH/cert.pem
+    cp /opt/hue-emulator/config/cert.pem $CONFIG_PATH/cert.pem
     echo -e "\033[33m--Certificate created--\033[0m"
 fi
 
@@ -67,3 +67,5 @@ else
     echo "Serve HTTPS"
     python3 -u /opt/hue-emulator/HueEmulator3.py --docker
 fi
+
+ln -s /opt/hue-emulator/config/ $CONFIG_PATH/
