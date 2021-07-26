@@ -13,7 +13,7 @@ ENV BUILD_ARCHI = ${BUILD_ARCH}
 # Other settings
 ENV LANG C.UTF-8
 ENV DIYHUE_VERSION=master
-ENV WORKING_DIR=/opt/hue-emulator/config
+ENV WORKING_DIR=/opt/hue-emulator
 
 # Create the needed folders
 RUN mkdir -p diyhue config ${WORKING_DIR}
@@ -57,7 +57,7 @@ ARG BUILD_REF
 ARG BUILD_VERSION
 
 ## Document volume
-VOLUME ["/config"]
+VOLUME ["/config/diyhue"]
 
 # Labels
 LABEL \
